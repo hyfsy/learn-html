@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>骰子</title>
+<style>
+
+	* {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+	}
+
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#container {
+		width: 100px;
+		height: 100px;
+		border: #666 solid 2px;
+		border-radius: 5px;
+		text-align: center;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-around;
+		flex-direction: column;
+	}
+
+	#container .wrap {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	#container .wrap span {
+		width: 20px;
+		height: 20px;
+		background: #666;
+		border-radius: 10px;
+	}
+
+	@media (max-width: 1200px) {
+		#mid-child {
+			display: none;
+		}
+	}
+
+	@media (max-width: 1050px) {
+		#container .wrap:nth-child(2) {
+			display: none;
+		}
+	}
+
+	@media (max-width: 900px) {
+		#container .wrap:nth-child(2) {
+			display: flex;
+		}
+
+		#container .wrap span:nth-child(1) {
+			display: none;
+		}
+
+		#container .wrap:first-child {
+			padding-left: 10px;
+			justify-content: flex-start;
+		}
+
+		#container .wrap:last-child {
+			padding-right: 10px;
+			justify-content: flex-end;
+		}
+	}
+
+	@media (max-width: 750px) {
+		#container .wrap:first-child {
+			display: none;
+		}
+
+		#container .wrap span:nth-child(1) {
+			display: flex;
+		}
+
+		#container .wrap:last-child {
+			display: none;
+		}
+	}
+
+	@media (max-width: 600px) {
+		#container .wrap span:nth-child(1) {
+			display: none;
+		}
+	}
+</style>
+</head>
+<body>
+	<div id="container">
+		<div class="wrap">
+			<span></span>
+			<span></span>
+		</div>
+		<div class="wrap">
+			<span id="mid-child"></span>
+			<span></span>
+		</div>
+		<div class="wrap">
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>手写板</title>
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+
+	canvas {
+		background: #cdcdcd;
+		display: block;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+	}
+</style>
+</head>
+<body>
+	<canvas id="sxb"></canvas>
+
+	<script>
+		// 设置画布宽高，获取绘图上下文
+		var canvasNode = document.querySelector('#sxb');
+		canvasNode.width = 600;
+		canvasNode.height = 300;
+		var ctx = canvasNode.getContext('2d');
+
+		canvasNode.onmousedown = function (ev) {
+			// 开启路径
+			ctx.beginPath();
+			// 鼠标点击位置
+			ctx.moveTo(ev.offsetX, ev.offsetY);
+
+			// 点击后才会触发移动事件
+			document.onmousemove = function (ev) {
+				// 鼠标移动位置
+				ctx.lineTo(ev.clientX - canvasNode.offsetLeft, ev.clientY - canvasNode.offsetTop);
+				// 描边
+				ctx.stroke();
+			};
+
+			// 鼠标抬起时，清除鼠标移动事件
+			document.onmouseup = function () {
+				this.onmousemove = null;
+			};
+		}
+	</script>
+	
+</body>
+</html>
